@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Conditional rendering</title>
+</head>
+<body>
+    <div id="app">
+        <div v-if="isVisible">
+            여긴 만일이 참일 때 본다.
+        </div>
+        <div v-else-if="otherVisible">
+            다른 어떤 것이 참일 때 본다.
+        </div>
+        <div v-else>
+            이외의 것.
+        </div>
+    </div>
+</body>
+<script src="https://unpkg.com/vue"></script>
+<script>
+const app = new Vue({
+    el: '#app',
+    data: {
+        isVisible: true,
+        otherVisible: true
+    }
+})
+</script>
+</html>

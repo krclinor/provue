@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Filtering our data</title>
+</head>
+<body>
+    <div id="app">
+        <form>
+            <label for="filterField">필드:
+                <select id="filterField">
+                    <option value="">Disable filters</option>
+                    <option value="isActive">Active user</option>
+                    <option value="name">Name</option>
+                    <option value="email">Email</option>
+                    <option value="balance">Balance</option>
+                    <option value="registered">Date registered</option>
+                </select>
+            </label>
+            <label for="filterquery">
+                쿼리:
+                <input type="text" id="filterQuery" v-model="filterQuery"> 
+            </label>
+            <span>
+                Active:
+                <label for="userStateActive">
+                    예:
+                    <input type="radio" :value="true" id="userStateActive" checked 
+                        v-model="filterUserState">
+                </label>
+                <label for="userStateInactive">
+                    아니오:
+                    <input type="radio" :value="false" id="userStateInactive"
+                        v-model="filterUserState">
+                </label>
+            </span>
+        </form>
+    </div>
+</body>
+<script src="https://unpkg.com/vue"></script>
+<script>
+const app = new Vue({
+    el: '#app',
+    data: {
+        filterField: '',
+        filterQuery: '',
+        filterUserState:'',
+        people: 
+            [  
+                {
+                    "index": 0,
+                    "guid": "b5d8466f-8d8c-4011-9433-03e59258cc44",
+                    "isActive": true,
+                    "balance": 2101.72,
+                    "name": "Rosalind Dejesus",
+                    "email": "rosalinddejesus@buzzworks.com",
+                    "registered": "2014-04-14T11:26:42"
+                },
+                {
+                    "index": 1,
+                    "guid": "eaa991c6-f152-4b72-ac93-374b6e341296",
+                    "isActive": true,
+                    "balance": 2837.52,
+                    "name": "Dickson Pruitt",
+                    "email": "dicksonpruitt@buzzworks.com",
+                    "registered": "2015-12-24T10:30:22"
+                },
+                {
+                    "index": 2,
+                    "guid": "4e8c6db1-904a-476f-a636-09fe44594eae",
+                    "isActive": false,
+                    "balance": 1390.73,
+                    "name": "Melissa Smith",
+                    "email": "melissasmith@buzzworks.com",
+                    "registered": "2017-12-30T06:59:21"
+                },
+                {
+                    "index": 3,
+                    "guid": "d4456012-f18d-4a56-a07e-13c25353c93c",
+                    "isActive": false,
+                    "balance": 1859.18,
+                    "name": "Simpson Morgan",
+                    "email": "simpsonmorgan@buzzworks.com",
+                    "registered": "2015-01-26T01:47:20"
+                },
+                {
+                    "index": 4,
+                    "guid": "baef9780-a346-4f77-9b87-c0a90168b1ce",
+                    "isActive": true,
+                    "balance": 1034.27,
+                    "name": "Stewart Bernard",
+                    "email": "stewartbernard@buzzworks.com",
+                    "registered": "2014-04-19T01:01:06"
+                }
+            ],
+        currency: '$'
+    },
+    methods:{
+        activeStatus(person){
+            return (person.isActive) ? 'Active' : 'Inactive'
+        },
+        formatBalance(balance){
+            return this.currency + balance.toFixed(2)
+        },
+        formatDate(date){
+            let registered = new Date(date)
+            return registered.toLocaleDateString('ko-KR')
+        }
+    }
+})
+</script>
+</html>

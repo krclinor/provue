@@ -10,6 +10,10 @@
 			</h4>
 			<div class="card-text bg-white p-1">
 				{{p.description}}
+				<button class="btn btn-success btn-sm float-right"
+					@click="handleProductAdd(p)">
+					Add to Cart
+				</button>
 			</div>
 		</div>
 		<page-controls/>
@@ -17,7 +21,7 @@
 </template>
 
 <script>
-import {mapGetters} from "vuex"
+import {mapGetters, mapMutations} from "vuex"
 import PageControls from "./PageControls"
 
 export default {
@@ -25,9 +29,11 @@ export default {
 	computed : {
 		...mapGetters({products: "processedProducts"})
 	},
-	filters:{
-		currency(value){
-			return new Intl.NumberFormat("ko-KR", {style: "currency", currency: "KRW"}).format(value)
+	methods:{
+		...mapMutations({addProduct: "cart/addProduct"}),
+		handleProductAdd(product){
+			this.addProduct(product)
+			this.$router.push("/cart")
 		}
 	}
 }

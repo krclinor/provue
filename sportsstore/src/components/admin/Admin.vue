@@ -18,7 +18,7 @@
 					Orders
 				</router-link>
 			</div>
-			<div class="col-9 p-2">
+			<div class="col p-2">
 				<router-view/>
 			</div>
 		</div>

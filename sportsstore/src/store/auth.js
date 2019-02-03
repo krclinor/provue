@@ -1,6 +1,8 @@
 import Axios from "axios"
 
-const loginUrl = "http://localhost:3500/login"
+const baseUrl = process.env.VUE_APP_BACK_END_BASE_URL
+
+const loginUrl = `${baseUrl}/login`
 
 export default{
 	state: {

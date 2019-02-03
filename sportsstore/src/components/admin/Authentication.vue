@@ -38,8 +38,8 @@ export default {
 	components:{ValidationError},
 	data(){
 		return  {
-			username: "admin",
-			password: "secret",
+			username: process.env.VUE_APP_USER_NAME,
+			password: process.env.VUE_APP_PASSWORD,
 			showFailureMessage: false
 		}
 	},

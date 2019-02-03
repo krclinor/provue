@@ -1,7 +1,9 @@
 import Axios from "axios"
 import Vue from "vue"
 
-const ORDERS_URL = "http://localhost:3500/orders"
+const baseUrl = process.env.VUE_APP_BACK_END_BASE_URL
+
+const ORDERS_URL = `${baseUrl}/orders`
 export default {
 	state:{
 		orders:[]

@@ -1,13 +1,4 @@
-<template>
-	<div class= "text-center p-3">
-		<h1 class="bg-secondary text-white p-3">
-			{{message}}
-		</h1>
-		<button class="btn btn-secondary" @click="handleClick">
-			Press Me
-		</button>
-	</div>
-</template>
+<template src="./App.html" />
 
 <script>
 export default {

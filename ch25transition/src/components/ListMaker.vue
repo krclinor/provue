@@ -3,20 +3,25 @@
 		<h3 class="bg-info text-white text-center p-2">My List</h3>
 		<table class="table table-sm">
 			<tr><th>#</th><th>Item</th><th width="20%" colspan="2"></th></tr>
-			<tr v-for="(item, i) in items" :key="item">
-				<td>{{i}}</td>
-				<td>{{item}}</td>
-				<td>
-					<button class="btn btn-sm btn-info"
-						@click="moveItem(i)">
-						Move
-					</button>
-					<button class="btn btn-sm btn-danger"
-						@click="removeItem(i)">
-						Delete
-					</button>
-				</td>
-			</tr>
+			<transition-group enter-active-class="animated fadeIn"
+				leave-active-class="animated fadeOut"
+				move-class="time"
+				tag="tbody">
+				<tr v-for="(item, i) in items" :key="item">
+					<td>{{i}}</td>
+					<td>{{item}}</td>
+					<td>
+						<button class="btn btn-sm btn-info"
+							@click="moveItem(i)">
+							Move
+						</button>
+						<button class="btn btn-sm btn-danger"
+							@click="removeItem(i)">
+							Delete
+						</button>
+					</td>
+				</tr>
+			</transition-group>
 			<controls @add="addItem"/>
 		</table>
 	</div>
@@ -44,3 +49,6 @@ export default {
 	}
 }
 </script>
+<style>
+.time {	transition: all 250ms;}
+</style>

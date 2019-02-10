@@ -3,10 +3,35 @@
 		<h3 class="bg-warning text-white text-center p-2">
 			Display
 		</h3>
-		<transition>
+		<!-- <--transition>
 			<div class="h4 bg-info text-center p-2"
 				v-if="show">
 				Hello, Adam
+			</div>
+		<--/transition> -->
+
+		<!-- animate.css 라이브러리 이용 -->
+		<!-- <--transition enter-to-class="fadeIn"
+			leave-to-class="fadOut">
+			<div class="animated h4 bg-info text-center p-2"
+				v-if="show">
+				Hello, Adam
+			</div>
+		<--/transition> -->
+
+		<!-- 동일타입의 여러 엘리먼트에 적용하기 위해서는 구분하기 위해 
+			key값을 설정
+		 -->
+		<transition	enter-active-class="fadeIn"
+					leave-active-class="fadOut"	mode="out-in">
+			<div class="animated h4 bg-info text-center p-2"
+				v-if="show"
+				key="hello">
+				Hello, Adam
+			</div>
+			<div v-else class="animated h4 bg-success text-center p-2"
+				key="goodbye">
+				Goodbye, Adam
 			</div>
 		</transition>
 		<div class="text-center">
